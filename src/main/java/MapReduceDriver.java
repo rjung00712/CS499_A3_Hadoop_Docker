@@ -212,32 +212,36 @@ public class MapReduceDriver extends Configured implements Tool {
     }
 
     public static void writeTopTen() {
-        File file = new File("TopTenList.txt");
+        File file1 = new File("TopTenMovieList.txt");
+        File file2 = new File("TopTenUserList.txt");
 
         try {
             // creates the file
-            file.createNewFile();
+            file1.createNewFile();
+            file2.createNewFile();
 
-            FileWriter writer = new FileWriter(file);
+            FileWriter writer1 = new FileWriter(file1);
+            FileWriter writer2 = new FileWriter(file2);
 
             System.out.println("Top 10 Movies");
-            writer.write("Top 10 Movies\n");
+            writer1.write("Top 10 Movies\n");
             for(int i = 0, count = 1; i < topTenMoviesList.size(); i++, count++) {
                 System.out.println(count + ") " + topTenMoviesList.get(i));
-                writer.write(count + ") " + topTenMoviesList.get(i) + "\n");
+                writer1.write(count + ") " + topTenMoviesList.get(i) + "\n");
             }
 
-            System.out.println();
-            writer.write("\n");
+            writer1.flush();
+            writer1.close();
 
             System.out.println("Top 10 Users");
-            writer.write("Top 10 Users\n");
+            writer2.write("Top 10 Users\n");
             for(int i = 0, count = 1; i < topTenUsersList.size(); i++, count++) {
                 System.out.println(count + ") " + topTenUsersList.get(i));
-                writer.write(count + ") " + topTenUsersList.get(i) + "\n");
+                writer2.write(count + ") " + topTenUsersList.get(i) + "\n");
             }
-            writer.flush();
-            writer.close();
+
+            writer2.flush();
+            writer2.close();
         } catch (IOException e) {
             System.out.println("file could not be created");
         }
