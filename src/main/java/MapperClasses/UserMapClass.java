@@ -8,8 +8,7 @@ import org.apache.hadoop.mapreduce.Mapper;
  * Created by Richard on 2/28/17.
  */
 public class UserMapClass extends Mapper<LongWritable, Text, LongWritable, LongWritable> {
-        private final static LongWritable one = new LongWritable(1);
-//    private Text movieId = new Text();
+    private final static LongWritable one = new LongWritable(1);
     private LongWritable userId;
 
     @Override
