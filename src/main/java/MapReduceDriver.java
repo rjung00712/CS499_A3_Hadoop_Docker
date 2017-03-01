@@ -11,7 +11,6 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,7 +32,7 @@ public class MapReduceDriver extends Configured implements Tool {
         // First that does the first counting and lists avg ratings and number
         Job avgRatingJob = new Job();
         avgRatingJob.setJarByClass(MapReduceDriver.class);
-        avgRatingJob.setJobName("WordCounter");
+        avgRatingJob.setJobName("RatingCounter");
 
         FileInputFormat.addInputPath(avgRatingJob, new Path(args[0]));
         FileOutputFormat.setOutputPath(avgRatingJob, new Path(args[1] + "/ratingsOutput"));
